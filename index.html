@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LoL Replays는 운영자 PC에서 League of Legends 리플레이 영상을 준비하고, 승인된 YouTube 채널에 업로드하는 Windows 데스크톱 도구입니다.">
+  <title>LoL Replays — YouTube API 사용 안내</title>
+  <style>
+    :root { color-scheme: light; --ink:#17212b; --muted:#526170; --line:#d9e1e8; --blue:#154f82; --wash:#f3f7fa; --paper:#fff; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--wash); color:var(--ink); font-family:system-ui,-apple-system,"Segoe UI",sans-serif; line-height:1.7; }
+    header { background:#102c45; color:#fff; }
+    .wrap { width:min(920px, calc(100% - 36px)); margin:0 auto; }
+    .top { padding:22px 0; display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .brand { color:#fff; font-weight:750; letter-spacing:.02em; text-decoration:none; font-size:1.05rem; }
+    nav { display:flex; flex-wrap:wrap; gap:18px; }
+    nav a { color:#e2edf7; text-decoration:none; font-size:.94rem; }
+    nav a:hover, a:hover { text-decoration:underline; }
+    main { padding:54px 0 72px; }
+    .hero { padding:0 0 30px; max-width:760px; }
+    .eyebrow { color:var(--blue); font-weight:700; font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; }
+    h1 { margin:.35rem 0 1rem; font-size:clamp(2.1rem,5vw,3.5rem); line-height:1.15; letter-spacing:-.04em; }
+    h2 { margin:2.2rem 0 .65rem; font-size:1.35rem; line-height:1.35; }
+    p { margin:.6rem 0; }
+    .lead { color:#334455; font-size:1.15rem; }
+    .notice { margin:24px 0; padding:16px 19px; border-left:4px solid #4387ba; background:#e7f1f8; border-radius:4px; }
+    .card { background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:22px 24px; margin:14px 0; box-shadow:0 4px 16px #17212b08; }
+    ul { padding-left:1.25rem; }
+    li { margin:.35rem 0; }
+    a { color:#155d91; }
+    .links { display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; }
+    .links a { display:inline-block; background:var(--blue); border-radius:7px; color:#fff; text-decoration:none; padding:10px 15px; font-weight:650; }
+    .links a.secondary { background:#fff; color:var(--blue); border:1px solid var(--line); }
+    footer { border-top:1px solid var(--line); color:var(--muted); font-size:.9rem; padding:22px 0 34px; }
+    @media (max-width:600px) { .top { align-items:flex-start; flex-direction:column; } main { padding-top:38px; } .card { padding:18px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="index.html">LoL Replays</a>
+      <nav aria-label="주요 메뉴">
+        <a href="privacy.html">개인정보처리방침</a>
+        <a href="terms.html">이용약관</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Local Windows desktop application</div>
+      <h1>경기 리플레이를<br>채널 영상으로 준비합니다.</h1>
+      <p class="lead">LoL Replays는 운영자 PC에서 League of Legends 경기 후보를 선택하고 리플레이 영상을 녹화한 뒤, 운영자가 Google OAuth로 승인한 YouTube 채널에 업로드하는 데스크톱 도구입니다.</p>
+      <div class="notice"><strong>YouTube API 사용 안내</strong><br>Google OAuth 승인 화면의 앱 이름은 <strong>lol-replays-prod</strong>입니다. 이 애플리케이션은 YouTube Data API Services를 사용해 승인된 채널을 확인하고, 영상과 썸네일을 업로드하며, 영상 공개 범위를 확인·설정합니다.</div>
+      <div class="links">
+        <a href="privacy.html">개인정보처리방침</a>
+        <a class="secondary" href="terms.html">이용약관</a>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="workflow">
+      <h2 id="workflow">동작 방식</h2>
+      <ul>
+        <li>운영자가 Google 계정으로 연결하고 영상 목적지 YouTube 채널을 선택합니다.</li>
+        <li>채널별 언어, 리그, 경기 조건, 업로드 빈도를 설정합니다. 새 채널은 자동화가 꺼진 상태로 시작합니다.</li>
+        <li>켜진 채널에 대해 프로그램이 경기 후보를 고르고 운영자 PC에서 리플레이를 녹화합니다.</li>
+        <li>영상은 비공개로 업로드되고, 썸네일을 적용한 뒤 채널과 빈도 조건을 다시 확인한 뒤 공개를 진행하고 결과를 검증합니다.</li>
+      </ul>
+      <p>애플리케이션은 공개 웹 서비스가 아닙니다. 관리 화면은 운영자의 컴퓨터에서만 열리도록 제한되어 있습니다.</p>
+    </section>
+
+    <section class="card" aria-labelledby="permissions">
+      <h2 id="permissions">Google 권한과 데이터</h2>
+      <p>Google 로그인 암호를 수집하지 않습니다. 앱은 YouTube 영상 업로드, 승인 채널 조회, 영상 공개 범위 관리를 위해 OAuth 권한을 요청합니다. 토큰과 업로드 이력의 저장 및 삭제 요청 방법은 <a href="privacy.html">개인정보처리방침</a>에서 확인할 수 있습니다.</p>
+      <p>Google의 개인정보처리 방식은 <a href="https://policies.google.com/privacy?hl=ko" rel="noopener noreferrer" target="_blank">Google 개인정보처리방침</a>을 확인해 주세요.</p>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">문의: <a href="mailto:baleen37@gmail.com">baleen37@gmail.com</a> · <a href="privacy.html">개인정보처리방침</a> · <a href="terms.html">이용약관</a></div>
+  </footer>
+</body>
+</html>

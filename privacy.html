@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LoL Replays가 Google OAuth 및 YouTube Data API Services를 통해 처리하는 정보와 보관·삭제 요청 방법을 안내합니다.">
+  <title>개인정보처리방침 — LoL Replays</title>
+  <style>
+    :root { color-scheme:light; --ink:#17212b; --muted:#526170; --line:#d9e1e8; --blue:#154f82; --wash:#f3f7fa; --paper:#fff; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--wash); color:var(--ink); font-family:system-ui,-apple-system,"Segoe UI",sans-serif; line-height:1.75; }
+    header { background:#102c45; color:#fff; }
+    .wrap { width:min(920px, calc(100% - 36px)); margin:0 auto; }
+    .top { padding:22px 0; display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .brand { color:#fff; font-weight:750; text-decoration:none; letter-spacing:.02em; }
+    nav { display:flex; gap:18px; flex-wrap:wrap; }
+    nav a { color:#e2edf7; text-decoration:none; font-size:.94rem; }
+    main { padding:46px 0 72px; }
+    .eyebrow { color:var(--blue); font-weight:700; font-size:.82rem; letter-spacing:.08em; }
+    h1 { margin:.3rem 0 .25rem; font-size:clamp(2rem,5vw,3rem); line-height:1.2; letter-spacing:-.035em; }
+    .updated { color:var(--muted); font-size:.92rem; }
+    h2 { margin:2rem 0 .45rem; font-size:1.3rem; line-height:1.4; }
+    p { margin:.6rem 0; }
+    ul { padding-left:1.3rem; }
+    li { margin:.42rem 0; }
+    a { color:#155d91; }
+    .intro, .callout { background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:18px 21px; margin:20px 0; }
+    .callout { border-left:4px solid #4387ba; }
+    footer { border-top:1px solid var(--line); color:var(--muted); font-size:.9rem; padding:22px 0 34px; }
+    @media (max-width:600px) { .top { align-items:flex-start; flex-direction:column; } main { padding-top:34px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="index.html">LoL Replays</a>
+      <nav aria-label="주요 메뉴"><a href="index.html">서비스 안내</a><a href="terms.html">이용약관</a></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="eyebrow">YouTube API Services</div>
+    <h1>개인정보처리방침</h1>
+    <p class="updated">마지막 수정일: 2026년 10월 11일</p>
+    <div class="intro">
+      <p>LoL Replays는 운영자 PC에서 실행하는 Windows 데스크톱 애플리케이션입니다. 이 방침은 프로그램이 Google OAuth와 YouTube Data API Services를 이용해 처리하는 정보와 삭제 요청 방법을 설명합니다.</p>
+      <p>문의 및 데이터 삭제 요청: <a href="mailto:baleen37@gmail.com">baleen37@gmail.com</a></p>
+    </div>
+
+    <section>
+      <h2>1. 처리하는 정보와 이용 목적</h2>
+      <ul>
+        <li><strong>OAuth 연결 정보:</strong> YouTube 채널 연결과 API 호출에 쓰이는 access token, refresh token 및 승인 범위. Google 계정 비밀번호는 앱이 받거나 저장하지 않습니다. 토큰은 Windows DPAPI로 암호화한 파일에 저장됩니다.</li>
+        <li><strong>채널 정보:</strong> 사용자가 승인한 계정에서 조회한 YouTube 채널 ID와 제목. 채널 선택, 채널별 설정과 업로드 목적지 확인에 사용합니다.</li>
+        <li><strong>영상과 업로드 정보:</strong> 운영자 PC의 영상 파일, 제목, 설명, 카테고리, 생성한 썸네일, YouTube 영상 ID, 공개 범위, 재개 가능한 업로드 세션 URL, 상태·오류, 파일 크기와 지문, 썸네일 경로와 상태. 업로드, 중단 복구, 목적지·공개 범위 확인에 사용합니다.</li>
+        <li><strong>채널 설정과 작업 기록:</strong> 언어, 리그, 경기 기준, 업로드 빈도, 후보 경기, 처리 단계와 게시 이력. 자동화 동작을 관리하고 같은 경기의 중복 작업을 막는 데 사용합니다.</li>
+        <li><strong>선택적 공개 차트 정보:</strong> 운영자가 별도 API 키를 설정한 경우, 지역별 인기 게임 영상의 공개 제목·조회수·게시일을 읽어 메모리에서 경기 후보의 관심 신호를 만들 수 있습니다. 확인한 코드에서는 이 차트 응답이나 계산된 점수를 저장된 후보 기록에 넣지 않습니다. 이 기능은 YouTube Analytics 또는 Reporting API를 호출하지 않습니다.</li>
+        <li><strong>게임 경기 정보:</strong> 경기 후보 선정과 로컬 녹화를 위해 Riot API와 League 클라이언트가 제공하는 경기·선수 정보를 별도로 사용합니다.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>2. 저장 위치와 정보 제공</h2><p>이 공개 안내 사이트는 로그인, 분석 스크립트 또는 자체 쿠키를 사용하지 않습니다. 정적 페이지 호스팅 과정에서 GitHub가 처리하는 정보는 <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub 개인정보처리방침</a>을 참고해 주세요.</p>
+      <p>OAuth 토큰 파일은 Windows DPAPI로 암호화하며 승인에 사용한 Windows 사용자 계정으로 보호됩니다. 채널 설정, token 파일 경로, YouTube 업로드 세션·영상 ID·처리 이력은 설치 시 운영자가 지정한 PostgreSQL 데이터베이스에 저장됩니다. 영상과 썸네일은 설치 시 지정한 파일 경로에 저장됩니다. 데이터베이스의 실제 호스트와 백업은 설치별로 다를 수 있습니다.</p>
+      <p>앱은 OAuth와 YouTube API 기능을 수행하기 위해 필요한 정보를 Google/YouTube에 전송합니다. 업로드한 영상과 메타데이터는 선택한 YouTube 채널에 게시되고 YouTube가 호스팅합니다. 관리 화면은 운영자 PC의 loopback 주소에서만 열립니다.</p>
+    </section>
+
+    <section>
+      <h2>3. 보유 기간</h2>
+      <p>현재 프로그램은 OAuth 토큰 파일, 채널 설정, YouTube 업로드 기록, 녹화물 또는 썸네일에 공통 자동 만료 기간을 설정하지 않습니다. 실제 보유 기간은 운영자가 지정한 데이터베이스와 파일 저장소를 관리하는 방식에 따라 달라집니다. 기록과 파일은 운영자가 직접 정리할 때까지 남을 수 있습니다.</p>
+    </section>
+
+    <section>
+      <h2>4. 연결 해제와 삭제 요청</h2>
+      <div class="callout">
+        <p>현재 앱에는 Google 권한 철회, 연결 해제 또는 로컬 데이터 삭제를 위한 자체 기능이 없습니다. Google 계정의 <a href="https://security.google.com/settings/security/permissions" rel="noopener noreferrer" target="_blank">서드 파티 앱 액세스 설정</a>에서 LoL Replays 권한을 철회할 수 있습니다. Google에서 권한을 철회해도 운영자 PC의 토큰 파일과 데이터베이스·파일 기록은 자동 삭제되지 않습니다.</p>
+      </div>
+      <p>운영자가 보유한 데이터의 삭제를 요청하려면 <a href="mailto:baleen37@gmail.com">baleen37@gmail.com</a>으로 연락해 주세요. 운영자는 요청 내용과 채널을 확인한 뒤 접근 가능한 로컬 데이터의 위치와 수동 삭제 가능 범위를 검토합니다. 앱의 로컬 기록을 삭제해도 YouTube에 게시된 영상은 삭제되지 않습니다. 영상 자체는 YouTube Studio에서 별도로 관리해야 합니다.</p>
+    </section>
+
+    <section>
+      <h2>5. 외부 개인정보처리방침</h2>
+      <p>YouTube API 서비스에 관한 사항은 <a href="https://developers.google.com/youtube/terms/developer-policies" rel="noopener noreferrer" target="_blank">YouTube API Services Developer Policies</a>와 <a href="https://developers.google.com/youtube/terms/api-services-terms-of-service" rel="noopener noreferrer" target="_blank">YouTube API Services Terms of Service</a>를 따릅니다. Google의 개인정보처리 내용은 <a href="https://policies.google.com/privacy?hl=ko" rel="noopener noreferrer" target="_blank">Google 개인정보처리방침</a>을 확인해 주세요.</p>
+      <p>개인정보 또는 권한 처리 문의: <a href="mailto:baleen37@gmail.com">baleen37@gmail.com</a></p>
+    </section>
+  </main>
+  <footer><div class="wrap"><a href="index.html">LoL Replays</a> · <a href="terms.html">이용약관</a> · 문의 <a href="mailto:baleen37@gmail.com">baleen37@gmail.com</a></div></footer>
+</body>
+</html>
